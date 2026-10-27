@@ -1,0 +1,61 @@
+Employee_ID,Department,Role,Experience_Months_At_Start,Skill_Level,Sustainable_Capacity_Points
+EMP001,Video & Motion,Video Creative,119,Senior,24.6
+EMP002,Creative Design,Graphic Designer,46,Intermediate,25.5
+EMP003,Copywriting,Copywriter,36,Intermediate,27.8
+EMP004,Strategy,Planning Executive,9,Junior,21.8
+EMP005,Copywriting,Copywriter,14,Junior,24.2
+EMP006,Account Management,Account Executive,32,Intermediate,22.4
+EMP007,Creative Design,Graphic Designer,5,Junior,22.2
+EMP008,Account Management,Client Partner,73,Senior,26.2
+EMP009,Creative Design,Creative Designer,70,Intermediate,26.0
+EMP010,Creative Design,Creative Designer,30,Junior,20.2
+EMP011,Strategy,Brand Strategist,70,Intermediate,23.8
+EMP012,Creative Design,Creative Designer,23,Intermediate,25.2
+EMP013,Video & Motion,Motion Designer,64,Intermediate,19.6
+EMP014,Creative Design,Creative Designer,20,Junior,19.8
+EMP015,Creative Design,Art Director,94,Senior,28.8
+EMP016,Strategy,Planning Executive,60,Intermediate,25.7
+EMP017,Creative Design,Art Director,111,Senior,30.4
+EMP018,Copywriting,Copywriter,45,Intermediate,22.2
+EMP019,Copywriting,Senior Copywriter,114,Senior,30.7
+EMP020,Copywriting,Senior Copywriter,44,Intermediate,20.5
+EMP021,Copywriting,Copywriter,28,Intermediate,27.1
+EMP022,Video & Motion,Motion Designer,57,Intermediate,23.9
+EMP023,Account Management,Client Partner,44,Intermediate,23.1
+EMP024,Strategy,Campaign Strategist,27,Junior,21.4
+EMP025,Copywriting,Copywriter,15,Junior,22.8
+EMP026,Account Management,Account Manager,44,Intermediate,25.8
+EMP027,Account Management,Account Executive,132,Senior,30.8
+EMP028,Strategy,Campaign Strategist,69,Intermediate,21.0
+EMP029,Creative Design,Creative Designer,48,Intermediate,26.8
+EMP030,Creative Design,Creative Designer,133,Senior,30.9
+EMP031,Copywriting,Content Strategist,36,Intermediate,22.6
+EMP032,Creative Design,Graphic Designer,5,Junior,20.2
+EMP033,Copywriting,Content Strategist,71,Intermediate,21.5
+EMP034,Creative Design,Graphic Designer,14,Junior,20.5
+EMP035,Strategy,Brand Strategist,28,Junior,22.2
+EMP036,Video & Motion,Video Creative,144,Senior,29.9
+EMP037,Creative Design,Graphic Designer,20,Junior,19.8
+EMP038,Creative Design,Art Director,27,Intermediate,20.1
+EMP039,Strategy,Brand Strategist,73,Senior,23.4
+EMP040,Account Management,Account Manager,13,Junior,21.4
+EMP041,Account Management,Account Manager,137,Senior,29.4
+EMP042,Video & Motion,Video Creative,89,Senior,23.8
+EMP043,Video & Motion,Video Editor,56,Intermediate,21.9
+EMP044,Creative Design,Creative Designer,14,Junior,21.7
+EMP045,Video & Motion,Video Editor,18,Junior,18.7
+EMP046,Creative Design,Art Director,83,Senior,26.9
+EMP047,Video & Motion,Motion Designer,19,Junior,18.1
+EMP048,Account Management,Account Executive,17,Junior,19.4
+EMP049,Strategy,Campaign Strategist,8,Junior,18.4
+EMP050,Copywriting,Senior Copywriter,28,Intermediate,22.8
+EMP051,Account Management,Account Executive,19,Junior,18.7
+EMP052,Creative Design,Graphic Designer,107,Senior,30.6
+EMP053,Video & Motion,Video Editor,67,Intermediate,20.2
+EMP054,Account Management,Account Manager,29,Intermediate,21.8
+EMP055,Creative Design,Creative Designer,45,Intermediate,22.4
+EMP056,Video & Motion,Video Editor,14,Junior,22.4
+EMP057,Creative Design,Art Director,108,Senior,25.0
+EMP058,Copywriting,Content Strategist,65,Intermediate,30.1
+EMP059,Copywriting,Senior Copywriter,22,Intermediate,24.1
+EMP060,Creative Design,Graphic Designer,10,Junior,19.2

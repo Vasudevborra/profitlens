@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CREATIVE CAPACITY INTELLIGENCE | AI-Powered Workload & Productivity Optimization</title>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <!-- Chart.js for Interactive Enterprise Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-layout">
+    <!-- ====================================================================
+         PERSISTENT LEFT SIDEBAR
+         ==================================================================== -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-eyebrow">
+          <span>●</span> ENTERPRISE DECISION SUPPORT
+        </div>
+        <div class="brand-title">CREATIVE CAPACITY INTELLIGENCE</div>
+        <div class="brand-subtitle">AI-Powered Workload &amp; Productivity Optimization for Advertising Operations</div>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Main Navigation">
+        <div class="nav-section-label">Executive Diagnostics</div>
+        <button class="nav-item active" data-page="page-overview">
+          <span class="nav-num">01</span>
+          <span>Overview</span>
+        </button>
+        <button class="nav-item" data-page="page-historical">
+          <span class="nav-num">02</span>
+          <span>Historical Productivity</span>
+        </button>
+        <button class="nav-item" data-page="page-tipping">
+          <span class="nav-num">03</span>
+          <span>Productivity Threshold</span>
+        </button>
+
+        <div class="nav-section-label" style="margin-top: 10px;">Capacity &amp; Operations</div>
+        <button class="nav-item" data-page="page-employees">
+          <span class="nav-num">04</span>
+          <span>Employee Capacity</span>
+        </button>
+        <button class="nav-item" data-page="page-teams">
+          <span class="nav-num">05</span>
+          <span>Team Capacity</span>
+        </button>
+
+        <div class="nav-section-label" style="margin-top: 10px;">Decision Intelligence</div>
+        <button class="nav-item" data-page="page-recommendations">
+          <span class="nav-num">06</span>
+          <span>AI Recommendations</span>
+        </button>
+        <button class="nav-item" data-page="page-risk">
+          <span class="nav-num">07</span>
+          <span>Risk &amp; Early Warning</span>
+        </button>
+        <button class="nav-item" data-page="page-simulator">
+          <span class="nav-num">08</span>
+          <span>What-If Planner</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-action-btn btn-coo-brief" id="btnOpenCooBrief">
+          <span>⚡</span> 30-Sec COO Executive Brief
+        </button>
+        <button class="sidebar-action-btn btn-csv-export" id="btnExportCsv">
+          <span>⬇</span> Download Full Dataset (.CSV)
+        </button>
+        <label class="sidebar-action-btn btn-csv-export" style="margin-bottom: 4px;">
+          <span>📂</span> Upload Custom CSV
+          <input type="file" id="csvFileInput" accept=".csv" style="display: none;" />
+        </label>
+        <div class="synthetic-disclosure">
+          <strong>Dataset:</strong> Synthetic historical data created for analytical demonstration (Jan 2025 – Jun 2026 · 60 Employees · 4,680 Employee-Weeks).
+        </div>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         MAIN CONTENT WRAPPER
+         ==================================================================== -->
+    <div class="main-wrapper">
+      <!-- STICKY TOP BAR WITH GLOBAL FILTERS -->
+      <header class="top-header">
+        <div class="header-top-row">
+          <div class="header-title-block">
+            <h1>
+              CREATIVE CAPACITY INTELLIGENCE
+              <span class="header-badge" id="currentViewBadge">01 · Executive Overview</span>
+            </h1>
+            <div class="header-subtitle">
+              AI-Powered Workload &amp; Productivity Optimization — Maximizing Advertising Output While Protecting Quality, Engagement &amp; Sustainability
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="badge badge-neutral" id="recordCountBadge">4,680 Employee-Weeks</span>
+          </div>
+        </div>
+
+        <div class="filter-bar">
+          <div class="filter-group">
+            <label class="filter-label" for="filterDatePreset">Analysis Window:</label>
+            <select id="filterDatePreset" class="filter-select">
+              <option value="all">Full Horizon (Jan 2025 – Jun 2026)</option>
+              <option value="current" selected>Current High-Workload Period (Q1–Q2 2026)</option>
+              <option value="h2_2025">Transition &amp; Surge Period (H2 2025)</option>
+              <option value="baseline">Historical Sustainable Baseline (H1 2025)</option>
+              <option value="q2_2026">Latest Quarter (2026-Q2: Apr–Jun 2026)</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="filterDepartment">Department:</label>
+            <select id="filterDepartment" class="filter-select">
+              <option value="ALL">All Departments (5)</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="filterRole">Role:</label>
+            <select id="filterRole" class="filter-select">
+              <option value="ALL">All Roles</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label class="filter-label" for="filterEmployee">Employee:</label>
+            <select id="filterEmployee" class="filter-select">
+              <option value="ALL">All Employees (60)</option>
+            </select>
+          </div>
+
+          <button class="btn-secondary" id="btnResetFilters">Reset Filters</button>
+
+          <div class="active-filter-summary" id="activeFilterSummary">
+            Comparing Selected Window vs. H1 2025 Historical Baseline
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN PAGE CONTAINER -->
+      <main class="page-content">
+        <div id="globalNoDataMessage" class="empty-state-box" style="display: none;">
+          <h3 style="color: var(--text-primary); margin-bottom: 6px;">No sufficient data for this segment</h3>
+          <p>The selected combination of filters returned zero employee-week observations. Please broaden your filter criteria or click "Reset Filters".</p>
+        </div>
+
+        <!-- DYNAMIC EXECUTIVE INSIGHT BANNER (SHOWN ACROSS TOP OF DASHBOARD) -->
+        <section class="executive-insight-banner" id="executiveInsightBanner">
+          <div class="insight-content">
+            <div class="insight-eyebrow">
+              <span>◆</span> AI MANAGEMENT SYNTHESIS — OPERATING SYSTEM DIAGNOSTIC
+            </div>
+            <div class="insight-text" id="dynamicExecutiveInsightText">
+              Loading real-time capacity intelligence from historical dataset...
+            </div>
+          </div>
+          <div class="sustainability-verdict-box" id="sustainabilityVerdictBox">
+            <div class="verdict-label">Operating System Status</div>
+            <div class="verdict-status" id="verdictStatusText" style="color: var(--status-red);">UNSUSTAINABLE OVERLOAD</div>
+            <div class="verdict-sub" id="verdictSubText">Rebalancing Required</div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             PAGE 1: EXECUTIVE OVERVIEW
+             ================================================================ -->
+        <section id="page-overview" class="page-view active">
+          <!-- 6 TOP KPI CARDS -->
+          <div class="kpi-grid" id="overviewKpiGrid">
+            <!-- Dynamically populated by app.js -->
+          </div>
+
+          <!-- ROW 1: WORKLOAD VS PRODUCTIVITY TREND & DEPARTMENT COMPARISON -->
+          <div class="grid-2-1">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Historical Trajectory: Workload Points vs. Effective Productivity Index</div>
+                  <div class="card-subtitle">Monthly agency progression (Jan 2025 – Jun 2026) highlighting the Q3 2025 decoupling point where rising hours ceased yielding productivity gains</div>
+                </div>
+                <span class="badge badge-warning">Inflection: Sep–Oct 2025</span>
+              </div>
+              <div class="chart-container tall">
+                <canvas id="chartOverviewTrend"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Workload Sustainability Risk Distribution</div>
+                  <div class="card-subtitle">Current employee breakdown by operating risk tier</div>
+                </div>
+                <span class="badge badge-neutral" id="overviewRiskTotalBadge">60 Employees</span>
+              </div>
+              <div class="chart-container short">
+                <canvas id="chartOverviewRiskDist"></canvas>
+              </div>
+              <div id="overviewRiskSummaryText" style="margin-top: 12px; font-size: 12px; color: var(--text-secondary); line-height: 1.5; padding-top: 10px; border-top: 1px solid var(--bg-subtle);"></div>
+            </div>
+          </div>
+
+          <!-- ROW 2: CAPACITY UTILIZATION DISTRIBUTION & OVERTIME TREND -->
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Department-Level Productivity &amp; Capacity Utilization Comparison</div>
+                  <div class="card-subtitle">Contrasting Capacity Utilization (%) against Effective Productivity Index across the 5 agency departments</div>
+                </div>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartOverviewDeptComp"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Overtime Hours vs. Client Revision Loops Trend</div>
+                  <div class="card-subtitle">Rising overtime correlates with elevated revision cycles and slower turnaround rather than higher net output</div>
+                </div>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartOverviewOvertimeTrend"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROW 3: CAPACITY UTILIZATION HISTOGRAM & TOP OPERATIONAL ISSUES -->
+          <div class="grid-1-2">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Employee Capacity Utilization Distribution</div>
+                  <div class="card-subtitle">Workforce distribution across utilization bands (Optimal: 85%–102%)</div>
+                </div>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartOverviewUtilDist"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Top Operational Bottlenecks &amp; Systemic Issues</div>
+                  <div class="card-subtitle">Root-cause diagnosis of why additional working hours are failing to convert into proportional advertising output</div>
+                </div>
+                <span class="badge badge-overload">Systemic Diagnostic</span>
+              </div>
+              <div class="issue-list" id="overviewIssuesList">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             PAGE 2: HISTORICAL PRODUCTIVITY ("From More Hours to Lower Productivity")
+             ================================================================ -->
+        <section id="page-historical" class="page-view">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title" style="font-size: 16px;">From More Hours to Lower Productivity — Historical Baseline vs. Current Period Analysis</div>
+                <div class="card-subtitle">Compare any two operational periods to quantify how workload escalation impacted working hours, revisions, engagement, and effective productivity</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <div class="filter-group">
+                  <label class="filter-label">Baseline Period (A):</label>
+                  <select id="histPeriodA" class="filter-select">
+                    <option value="H1_2025" selected>H1 2025 (Jan–Jun 2025 · Sustainable Baseline)</option>
+                    <option value="Q1_2025">2025-Q1 (Jan–Mar 2025)</option>
+                    <option value="Q2_2025">2025-Q2 (Apr–Jun 2025)</option>
+                    <option value="Q3_2025">2025-Q3 (Jul–Sep 2025 · Transition)</option>
+                  </select>
+                </div>
+                <div class="filter-group">
+                  <label class="filter-label">Comparison Period (B):</label>
+                  <select id="histPeriodB" class="filter-select">
+                    <option value="H1_2026" selected>H1 2026 (Jan–Jun 2026 · Current High-Workload)</option>
+                    <option value="Q2_2026">2026-Q2 (Apr–Jun 2026 · Latest Quarter)</option>
+                    <option value="Q1_2026">2026-Q1 (Jan–Mar 2026)</option>
+                    <option value="Q4_2025">2025-Q4 (Oct–Dec 2025 · Surge Onset)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Explanatory AI Insight Panel for Historical Page -->
+            <div id="historicalAiPanel" style="background-color: #F8FAFC; border: 1px solid var(--border-color); border-left: 4px solid var(--brand-teal); padding: 14px 16px; border-radius: 4px; margin-bottom: 16px; font-size: 13px; line-height: 1.55;"></div>
+
+            <!-- Side-by-Side Comparison Matrix -->
+            <div class="table-responsive">
+              <table class="data-table" id="historicalComparisonTable">
+                <thead>
+                  <tr>
+                    <th>Operational Metric</th>
+                    <th>Analytical Definition</th>
+                    <th class="num-col" id="thPeriodA">Baseline Period (A)</th>
+                    <th class="num-col" id="thPeriodB">Current Period (B)</th>
+                    <th class="num-col">Absolute Change</th>
+                    <th class="num-col">% Change</th>
+                    <th>Operational Interpretation</th>
+                  </tr>
+                </thead>
+                <tbody id="historicalComparisonBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 6 SYNCHRONIZED MONTHLY TREND CHARTS -->
+          <div class="grid-3">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">1. Monthly Workload Trend (Points)</div>
+                  <div class="card-subtitle">Normalized Workload Points vs. Sustainable Capacity</div>
+                </div>
+              </div>
+              <div class="chart-container short">
+                <canvas id="chartHistWorkload"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">2. Monthly Working-Hours Trend</div>
+                  <div class="card-subtitle">Average Weekly Working Hours per Employee (Standard: 40h)</div>
+                </div>
+              </div>
+              <div class="chart-container short">
+                <canvas id="chartHistHours"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">3. Monthly Overtime Trend</div>
+                  <div class="card-subtitle">Average Weekly Overtime Hours per Employee</div>
+                </div>
+              </div>
+              <div class="chart-container short">
+                <canvas id="chartHistOvertime"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">4. Monthly Productivity Trend</div>
+                  <div class="card-subtitle">Effective Productivity Index vs. Raw Hourly Output</div>
+                </div>
+              </div>
+              <div class="chart-container short">
+                <canvas id="chartHistProductivity"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">5. Monthly Engagement Score Trend</div>
+                  <div class="card-subtitle">Employee Engagement (1–10 Scale) under sustained overtime</div>
+                </div>
+              </div>
+              <div class="chart-container short">
+                <canvas id="chartHistEngagement"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">6. Monthly Absenteeism Trend</div>
+                  <div class="card-subtitle">Average Weekly Absenteeism Days (Lagging Fatigue Indicator)</div>
+                </div>
+              </div>
+              <div class="chart-container short">
+                <canvas id="chartHistAbsenteeism"></canvas>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             PAGE 3: PRODUCTIVITY TIPPING POINT (THRESHOLD ANALYSIS)
+             ================================================================ -->
+        <section id="page-tipping" class="page-view">
+          <!-- 4 DYNAMIC THRESHOLD KPI CARDS -->
+          <div class="grid-4" id="tippingKpiCards">
+            <!-- Populated dynamically -->
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title" style="font-size: 16px;">Empirical Productivity Tipping Point — Workload Points vs. Productivity Points per Hour</div>
+                <div class="card-subtitle">Non-linear regression curve across employee-week observations demonstrating where creative output efficiency peaks and begins diminishing</div>
+              </div>
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <span class="badge badge-sustainable">Sustainable Zone (&le; Peak)</span>
+                <span class="badge badge-warning">Warning Zone (Peak to +14%)</span>
+                <span class="badge badge-overload">Overload Zone (&gt; +14% Above Peak)</span>
+              </div>
+            </div>
+
+            <!-- AI Explanation Banner on Tipping Point Page -->
+            <div id="tippingAiExplanation" style="background-color: #F8FAFC; border: 1px solid var(--border-color); border-left: 4px solid var(--brand-blue); padding: 13px 16px; border-radius: 4px; margin-bottom: 16px; font-size: 13px; line-height: 1.55;"></div>
+
+            <div class="chart-container tall">
+              <canvas id="chartTippingScatter"></canvas>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Capacity Utilization (%) vs. Effective Productivity Index</div>
+                  <div class="card-subtitle">Demonstrates how quality degradation and client revision loops compound hourly slowdown once utilization exceeds 100%–105%</div>
+                </div>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartUtilVsEffective"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Threshold Regime Breakdown: Operational Metrics by Workload Zone</div>
+                  <div class="card-subtitle">Empirical comparison of observations in Sustainable, Warning, and Overload regimes</div>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table" id="tippingRegimeTable">
+                  <thead>
+                    <tr>
+                      <th>Workload Regime</th>
+                      <th class="num-col">Share of Weeks</th>
+                      <th class="num-col">Avg Workload</th>
+                      <th class="num-col">Avg Overtime</th>
+                      <th class="num-col">Pts / Hour</th>
+                      <th class="num-col">Revisions</th>
+                      <th class="num-col">Completion</th>
+                      <th class="num-col">Effective Index</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tippingRegimeBody"></tbody>
+                </table>
+              </div>
+              <div style="margin-top: 14px; font-size: 12px; color: var(--text-muted); line-height: 1.5;">
+                <strong>Analytical Note on Correlation vs. Causation:</strong> Higher workload levels and overtime hours are empirically <em>associated with</em> lower hourly productivity and higher revision counts across historical employee-weeks. While fatigue and task-switching friction are primary operational mechanisms, complex client campaigns can also simultaneously drive both higher point assignments and heavier review cycles.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             PAGE 4: EMPLOYEE CAPACITY INTELLIGENCE
+             ================================================================ -->
+        <section id="page-employees" class="page-view">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title" style="font-size: 16px;">Employee Capacity Intelligence &amp; Individual Baseline Comparison</div>
+                <div class="card-subtitle">Click any employee row to open their full longitudinal profile, baseline comparison, and non-disciplinary capacity rebalancing plan</div>
+              </div>
+              <span class="badge badge-neutral">Diagnostic Focus: System Allocation, Not Individual Blame</span>
+            </div>
+
+            <div class="table-toolbar">
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <input type="text" id="empSearchInput" class="filter-input" placeholder="Search Employee ID, Role, Department..." style="min-width: 260px;" />
+                <select id="empRiskFilter" class="filter-select">
+                  <option value="ALL">All Sustainability Risk Tiers</option>
+                  <option value="High">High Risk Only</option>
+                  <option value="Medium">Medium Risk Only</option>
+                  <option value="Low">Low Risk (Healthy / Available)</option>
+                </select>
+                <select id="empSortSelect" class="filter-select">
+                  <option value="util_desc">Sort: Capacity Utilization (High &rarr; Low)</option>
+                  <option value="util_asc">Sort: Capacity Utilization (Low &rarr; High)</option>
+                  <option value="workload_desc">Sort: Current Workload (High &rarr; Low)</option>
+                  <option value="prod_change_asc">Sort: Productivity Drop (Largest Decline First)</option>
+                  <option value="ot_desc">Sort: Overtime Hours (High &rarr; Low)</option>
+                  <option value="id_asc">Sort: Employee ID (EMP001 &rarr; EMP060)</option>
+                </select>
+              </div>
+              <div style="font-size: 12px; color: var(--text-muted);" id="empTableCountLabel">Showing 60 of 60 employees</div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table" id="employeeIntelligenceTable">
+                <thead>
+                  <tr>
+                    <th>Employee</th>
+                    <th>Department</th>
+                    <th>Role</th>
+                    <th class="num-col">Current Workload</th>
+                    <th class="num-col">Sustainable Cap</th>
+                    <th>Capacity Utilization</th>
+                    <th class="num-col">Overtime</th>
+                    <th class="num-col">Completion</th>
+                    <th class="num-col">Engagement</th>
+                    <th class="num-col">Quality</th>
+                    <th class="num-col">Performance</th>
+                    <th class="num-col">Prod. Change</th>
+                    <th>Sustainability Risk</th>
+                    <th class="num-col">Recommended Load</th>
+                  </tr>
+                </thead>
+                <tbody id="employeeIntelligenceBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             PAGE 5: TEAM & DEPARTMENT CAPACITY
+             ================================================================ -->
+        <section id="page-teams" class="page-view">
+          <!-- Bottleneck AI Banner -->
+          <div class="card" style="border-left: 4px solid var(--status-amber);">
+            <div class="card-title" style="margin-bottom: 4px;">Cross-Department Capacity Imbalance &amp; Bottleneck Diagnostic</div>
+            <div id="teamBottleneckNarrative" style="font-size: 13px; color: var(--text-secondary); line-height: 1.55;"></div>
+          </div>
+
+          <!-- Department Summary Cards -->
+          <div class="grid-3" id="departmentCardsContainer" style="grid-template-columns: repeat(5, 1fr);">
+            <!-- Populated dynamically for all 5 departments -->
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Department Workload vs. Sustainable Capacity &amp; Available Headroom</div>
+                  <div class="card-subtitle">Weekly total workload points compared to aggregate sustainable capacity by department</div>
+                </div>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartTeamCapacityBar"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Department Overtime, Turnaround Delay &amp; Quality Comparison</div>
+                  <div class="card-subtitle">Operational strain concentration across Creative Design and Video &amp; Motion</div>
+                </div>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartTeamStrainRadar"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Department Comprehensive Table -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Department Capacity &amp; Productivity Matrix</div>
+                <div class="card-subtitle">Full operational performance and capacity metrics across all five agency departments</div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Department</th>
+                    <th class="num-col">Headcount</th>
+                    <th class="num-col">Total Workload (Pts/Wk)</th>
+                    <th class="num-col">Sustainable Cap (Pts/Wk)</th>
+                    <th class="num-col">Available / (Excess) Cap</th>
+                    <th>Capacity Utilization</th>
+                    <th class="num-col">Effective Prod.</th>
+                    <th class="num-col">Avg Overtime</th>
+                    <th class="num-col">Engagement</th>
+                    <th class="num-col">Absenteeism</th>
+                    <th class="num-col">Quality</th>
+                    <th class="num-col">High-Risk Staff</th>
+                  </tr>
+                </thead>
+                <tbody id="teamComparisonTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Department x Quarter/Month Capacity Utilization Heatmap -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Heatmap: Department &times; Quarterly Capacity Utilization (%)</div>
+                <div class="card-subtitle">Longitudinal progression from balanced operations (H1 2025) to severe structural bottlenecking (H1 2026)</div>
+              </div>
+              <div style="display: flex; gap: 6px;">
+                <span class="badge badge-sustainable">&lt;95% Headroom</span>
+                <span class="badge badge-neutral">95%–102% Optimal</span>
+                <span class="badge badge-warning">103%–114% Warning</span>
+                <span class="badge badge-overload">&ge;115% Overload</span>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table heatmap-table" id="deptHeatmapTable">
+                <thead id="deptHeatmapHead"></thead>
+                <tbody id="deptHeatmapBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             PAGE 6: AI WORKLOAD RECOMMENDATION ENGINE ("Recommended Workload Plan")
+             ================================================================ -->
+        <section id="page-recommendations" class="page-view">
+          <!-- Key Business Output Synthesis Box -->
+          <div class="card" style="border-left: 4px solid var(--brand-navy); background-color: #F8FAFC;">
+            <div class="insight-eyebrow">KEY EXECUTIVE RECOMMENDATION — WHAT MANAGEMENT SHOULD DO NEXT</div>
+            <div id="finalAiExecutiveRecommendation" style="font-size: 14px; color: var(--text-primary); line-height: 1.6; margin-top: 6px;"></div>
+          </div>
+
+          <!-- Capacity Rebalancing Summary Strip -->
+          <div class="grid-4" id="recSummaryStrip"></div>
+
+          <!-- Actionable Recommendation Cards Grid -->
+          <div class="grid-2" id="recommendationCardsGrid">
+            <!-- Dynamically generated recommendation cards -->
+          </div>
+
+          <!-- Employee-Level Reallocation Ledger -->
+          <div class="card" style="margin-top: 18px;">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Employee-Level Recommended Workload Allocation Plan</div>
+                <div class="card-subtitle">Calculated workload adjustments for overloaded and underutilized specialists to restore sustainable capacity (92%–98% target utilization)</div>
+              </div>
+              <select id="recTableFilter" class="filter-select">
+                <option value="ACTION_NEEDED">Show Overloaded &amp; Reallocation Candidates First</option>
+                <option value="ALL">Show All 60 Employees</option>
+              </select>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Employee</th>
+                    <th>Department</th>
+                    <th>Role</th>
+                    <th class="num-col">Current Workload</th>
+                    <th class="num-col">Sustainable Cap</th>
+                    <th class="num-col">Recommended Workload</th>
+                    <th class="num-col">Point Adjustment</th>
+                    <th>Primary Recommended Action</th>
+                    <th>Expected Operational Impact</th>
+                  </tr>
+                </thead>
+                <tbody id="recEmployeeLedgerBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             PAGE 7: RISK & EARLY WARNING ("Workload Sustainability Risk")
+             ================================================================ -->
+        <section id="page-risk" class="page-view">
+          <!-- Early Warning Operational Cascade Chain -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title" style="font-size: 16px;">Early Warning Operational Chain — Longitudinal Cascade Analysis</div>
+                <div class="card-subtitle">Empirical sequence showing how excessive workload propagates through overtime, turnaround delays, and engagement erosion before manifesting as lagging absenteeism</div>
+              </div>
+              <span class="badge badge-warning">Absenteeism = Lagging Indicator (+4 to 8 Wks)</span>
+            </div>
+
+            <div class="operational-chain" id="earlyWarningChainContainer">
+              <!-- Populated dynamically -->
+            </div>
+
+            <div style="margin-top: 12px; font-size: 12px; color: var(--text-secondary); background-color: var(--bg-subtle); padding: 10px 14px; border-radius: 4px;">
+              <strong>Statistical Co-Movement Note:</strong> Time-series cross-correlation across the 78-week panel shows strong co-movement between Workload Utilization and Overtime ($r = +0.91$, contemporaneous), Overtime and Completion Delay ($r = +0.84$, 1-week lag), Overtime and Engagement Decline ($r = -0.82$, 2-week lag), and Engagement Decline and Absenteeism Days ($r = -0.68$, peaking at a 4-to-6 week lag). Management should treat rising overtime and revision counts as leading early-warning triggers rather than waiting for absenteeism or attrition to materialize.
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Multi-Factor Risk Score Composition by Department</div>
+                  <div class="card-subtitle">Distribution of Low, Medium, and High Workload Sustainability Risk across teams</div>
+                </div>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartRiskByDepartment"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Leading vs. Lagging Indicator Trajectory (Normalized Index)</div>
+                  <div class="card-subtitle">Demonstrating how Workload &amp; Overtime surge in Q3 2025 precedes the Q1 2026 Absenteeism spike</div>
+                </div>
+              </div>
+              <div class="chart-container">
+                <canvas id="chartLaggingIndicators"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top 10 Highest-Risk Cases Table -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Top 10 Highest Workload Sustainability Risk Cases (Early Warning Watchlist)</div>
+                <div class="card-subtitle">Ranked by composite sustainability strain (High Workload + Increasing Overtime + Completion Delay + Declining Engagement + Absenteeism + Quality Drift). Click any row to inspect employee profile.</div>
+              </div>
+              <span class="badge badge-overload">Capacity Protection Priority</span>
+            </div>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Employee</th>
+                    <th>Department &amp; Role</th>
+                    <th>Risk Classification</th>
+                    <th class="num-col">Cap. Util %</th>
+                    <th class="num-col">Overtime</th>
+                    <th class="num-col">Comp. Time</th>
+                    <th class="num-col">Engagement</th>
+                    <th class="num-col">Absenteeism</th>
+                    <th class="num-col">Quality</th>
+                    <th>Active Early Warning Triggers</th>
+                    <th class="num-col">Target Relief</th>
+                  </tr>
+                </thead>
+                <tbody id="top10RiskTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             PAGE 8: SIMULATION / WHAT-IF PLANNER
+             ================================================================ -->
+        <section id="page-simulator" class="page-view">
+          <div class="card" style="border-left: 4px solid var(--brand-teal);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+              <div>
+                <div class="card-title" style="font-size: 16px;">Interactive Capacity &amp; Policy Simulator — What-If Decision Planner</div>
+                <div class="card-subtitle">Simulate policy interventions (workload rebalancing, headcount additions, overtime caps, and deadline buffers) to estimate operational impact</div>
+              </div>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button class="btn-secondary" id="simPresetOptimal" style="background-color: #ECFDF5; border-color: #10B981; color: #065F46; font-weight: 600;">Apply AI Recommended Optimal Plan</button>
+                <button class="btn-secondary" id="simPresetCapOnly">Overtime Cap Only (8h Max)</button>
+                <button class="btn-secondary" id="simPresetHire">Hire +6 Specialists in Bottlenecks</button>
+                <button class="btn-secondary" id="simPresetReset">Reset to Current State</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-1-2">
+            <!-- Left: Interactive Sliders -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Management Policy Levers</div>
+                  <div class="card-subtitle">Adjust parameters to test operational scenarios</div>
+                </div>
+                <span class="badge badge-neutral">Model Estimate</span>
+              </div>
+
+              <div class="sim-control-group">
+                <div class="sim-control-header">
+                  <label class="sim-control-label" for="simWorkloadPct">1. Aggregate Workload Volume Adjustment</label>
+                  <span class="sim-control-val" id="valSimWorkloadPct">-8%</span>
+                </div>
+                <input type="range" id="simWorkloadPct" class="sim-slider" min="-25" max="20" step="1" value="-8" />
+                <div class="sim-scale-labels">
+                  <span>-25% (De-scope Low-ROI Ads)</span>
+                  <span>0% (Current)</span>
+                  <span>+20% (Expansion)</span>
+                </div>
+              </div>
+
+              <div class="sim-control-group">
+                <div class="sim-control-header">
+                  <label class="sim-control-label" for="simHeadcountDelta">2. Net Specialist Headcount Change (FTEs)</label>
+                  <span class="sim-control-val" id="valSimHeadcountDelta">+0 FTE</span>
+                </div>
+                <input type="range" id="simHeadcountDelta" class="sim-slider" min="-5" max="15" step="1" value="0" />
+                <div class="sim-scale-labels">
+                  <span>-5 FTE</span>
+                  <span>0 (60 Staff)</span>
+                  <span>+15 FTE (75 Staff)</span>
+                </div>
+              </div>
+
+              <div class="sim-control-group">
+                <div class="sim-control-header">
+                  <label class="sim-control-label" for="simOvertimeCap">3. Weekly Overtime Limit per Employee</label>
+                  <span class="sim-control-val" id="valSimOvertimeCap">6.0 hrs/wk</span>
+                </div>
+                <input type="range" id="simOvertimeCap" class="sim-slider" min="2" max="20" step="0.5" value="6" />
+                <div class="sim-scale-labels">
+                  <span>2h (Strict Cap)</span>
+                  <span>10h (Moderate)</span>
+                  <span>20h (Unrestricted)</span>
+                </div>
+              </div>
+
+              <div class="sim-control-group">
+                <div class="sim-control-header">
+                  <label class="sim-control-label" for="simRedistribPct">4. Cross-Team Work Redistribution Efficiency</label>
+                  <span class="sim-control-val" id="valSimRedistribPct">75%</span>
+                </div>
+                <input type="range" id="simRedistribPct" class="sim-slider" min="0" max="100" step="5" value="75" />
+                <div class="sim-scale-labels">
+                  <span>0% (Siloed)</span>
+                  <span>50% (Partial Shift)</span>
+                  <span>100% (Full Rebalance)</span>
+                </div>
+              </div>
+
+              <div class="sim-control-group" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+                <div class="sim-control-header">
+                  <label class="sim-control-label" for="simDeadlineBuffer">5. Campaign Turnaround Buffer Extension</label>
+                  <span class="sim-control-val" id="valSimDeadlineBuffer">+0.5 days</span>
+                </div>
+                <input type="range" id="simDeadlineBuffer" class="sim-slider" min="-1" max="2.5" step="0.25" value="0.5" />
+                <div class="sim-scale-labels">
+                  <span>-1.0d (Tighter Pressure)</span>
+                  <span>0d (Current)</span>
+                  <span>+2.5d (Paced SLA)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Simulated State Comparison & Charts -->
+            <div>
+              <div class="card" style="margin-bottom: 18px;">
+                <div class="card-header">
+                  <div>
+                    <div class="card-title">Current State vs. Simulated State Outcome Comparison</div>
+                    <div class="card-subtitle">All simulated figures represent empirical response-surface <strong>Model Estimates</strong>, not guaranteed deterministic outcomes</div>
+                  </div>
+                  <span class="badge badge-sustainable">Model Estimate</span>
+                </div>
+
+                <div class="table-responsive">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Agency Performance Dimension</th>
+                        <th class="num-col">Current State (Actual)</th>
+                        <th class="num-col">Simulated State (Model Estimate)</th>
+                        <th class="num-col">Estimated Delta</th>
+                        <th>Projected Direction</th>
+                      </tr>
+                    </thead>
+                    <tbody id="simulatorComparisonBody"></tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="grid-2">
+                <div class="card">
+                  <div class="card-header">
+                    <div>
+                      <div class="card-title">Department Utilization: Current vs. Simulated (%)</div>
+                      <div class="card-subtitle">Impact of rebalancing and volume levers across teams</div>
+                    </div>
+                  </div>
+                  <div class="chart-container short">
+                    <canvas id="chartSimDeptUtil"></canvas>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header">
+                    <div>
+                      <div class="card-title">Multi-Metric Impact Profile (Indexed to 100)</div>
+                      <div class="card-subtitle">Projected shift in Productivity, Quality, Engagement &amp; Risk</div>
+                    </div>
+                  </div>
+                  <div class="chart-container short">
+                    <canvas id="chartSimImpactProfile"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 1: DETAILED EMPLOYEE PROFILE DRAWER
+       ====================================================================== -->
+  <div class="modal-overlay" id="employeeModalOverlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--brand-blue);" id="modalEmpEyebrow">EMPLOYEE CAPACITY PROFILE</div>
+          <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary);" id="modalEmpTitle">EMP001 — Video Creative</h2>
+        </div>
+        <button class="modal-close-btn" id="btnCloseEmpModal">&times; Close Profile</button>
+      </div>
+      <div class="modal-body">
+        <!-- AI Capacity Recommendation Box (Non-Disciplinary) -->
+        <div id="modalEmpAiRec" style="background-color: #F0FDFA; border: 1px solid #99F6E4; border-left: 4px solid var(--brand-teal); padding: 14px 16px; border-radius: 4px; margin-bottom: 18px; font-size: 13px; line-height: 1.55;"></div>
+
+        <!-- 6 Employee Summary Metrics -->
+        <div class="kpi-grid" id="modalEmpKpiGrid" style="margin-bottom: 18px;"></div>
+
+        <!-- 2x2 Charts for Employee Longitudinal Trajectory -->
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Historical Workload vs. Sustainable Capacity</div>
+                <div class="card-subtitle">Monthly workload points compared against personal sustainable threshold</div>
+              </div>
+            </div>
+            <div class="chart-container short">
+              <canvas id="chartModalEmpWorkload"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Effective Productivity vs. Historical Baseline</div>
+                <div class="card-subtitle">Tracking productivity index against personal H1 2025 baseline</div>
+              </div>
+            </div>
+            <div class="chart-container short">
+              <canvas id="chartModalEmpProd"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Overtime Hours &amp; Completion Time Trend</div>
+                <div class="card-subtitle">Weekly overtime hours vs. average ad turnaround days</div>
+              </div>
+            </div>
+            <div class="chart-container short">
+              <canvas id="chartModalEmpOvertime"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Quality, Engagement &amp; Absenteeism Trajectory</div>
+                <div class="card-subtitle">Human sustainability and deliverable quality indicators</div>
+              </div>
+            </div>
+            <div class="chart-container short">
+              <canvas id="chartModalEmpQualityEng"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       MODAL 2: 30-SECOND COO EXECUTIVE BRIEFING
+       ====================================================================== -->
+  <div class="modal-overlay" id="cooBriefModalOverlay">
+    <div class="modal-dialog" style="max-width: 920px;">
+      <div class="modal-header">
+        <div>
+          <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-teal);">EXECUTIVE DECISION BRIEFING</div>
+          <h2 style="font-size: 18px; font-weight: 700; color: var(--text-primary);">COO 30-Second Diagnostic — 8 Core Management Questions Answered</h2>
+        </div>
+        <button class="modal-close-btn" id="btnCloseCooModal">&times; Close Briefing</button>
+      </div>
+      <div class="modal-body" id="cooBriefModalBody">
+        <!-- Populated dynamically with exact dataset answers -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Engine & Main Application Scripts -->
+  <script src="data.js" onerror="console.log('Using built-in deterministic generator in data_engine.js')"></script>
+  <script src="data_engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
